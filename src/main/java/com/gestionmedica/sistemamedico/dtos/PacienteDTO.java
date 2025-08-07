@@ -1,5 +1,6 @@
 package com.gestionmedica.sistemamedico.dtos;
 
+import com.gestionmedica.sistemamedico.entities.Usuario;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -14,5 +15,5 @@ public class PacienteDTO {
     private String nombre;
     private String numeroIdentificacion;
     private LocalDate fechaNacimiento;
-    private String email;
+    private Usuario usuario; 
 }
