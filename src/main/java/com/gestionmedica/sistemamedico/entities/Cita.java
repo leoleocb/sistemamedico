@@ -1,6 +1,5 @@
 package com.gestionmedica.sistemamedico.entities;
 
-import com.gestionmedica.sistemamedico.enums.*;
 import com.gestionmedica.sistemamedico.enums.Enums.EstadoCita;
 
 import jakarta.persistence.*;
