@@ -28,8 +28,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setEmail(usuarioDTO.getEmail());
         usuario.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
 
+        // crear los roles si no existen
         Role rolPaciente = roleRepository.findByName("ROLE_PACIENTE")
-                .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
+                .orElseGet(() -> roleRepository.save(new Role(null, "ROLE_PACIENTE")));
 
         usuario.setRoles(Collections.singleton(rolPaciente));
         return usuarioRepository.save(usuario);

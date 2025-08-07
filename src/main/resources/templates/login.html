@@ -1,17 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <title>Iniciar sesión</title>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h2>Login</h2>
-<form th:action="@{/login}" method="post">
-    <label>Email:</label>
-    <input type="text" name="username"/><br/>
-    <label>Contraseña:</label>
-    <input type="password" name="password"/><br/>
-    <button type="submit">Entrar</button>
-</form>
-<p><a th:href="@{/register}">Registrarse</a></p>
+<body class="bg-light d-flex align-items-center" style="height: 100vh;">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Iniciar Sesión</h3>
+
+                    <form th:action="@{/login}" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Correo Electrónico</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="correo@ejemplo.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                        </div>
+                    </form>
+
+                    <div th:if="${param.error}" class="alert alert-danger mt-3 text-center">
+                        Credenciales inválidas. Inténtalo de nuevo.
+                    </div>
+
+                    <div th:if="${param.logout}" class="alert alert-success mt-3 text-center">
+                        Has cerrado sesión exitosamente.
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-3">
+                ¿No tienes cuenta? <a th:href="@{/register}">Regístrate</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

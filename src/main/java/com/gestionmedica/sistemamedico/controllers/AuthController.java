@@ -15,18 +15,20 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "login"; 
     }
 
+   
     @GetMapping("/register")
     public String mostrarFormularioRegistro(Model model) {
-        model.addAttribute("usuarioDTO", new UsuarioDTO());
-        return "register";
+        model.addAttribute("usuario", new UsuarioDTO()); 
+        return "register"; 
     }
 
+   
     @PostMapping("/register")
-    public String procesarRegistro(@ModelAttribute UsuarioDTO usuarioDTO) {
+    public String procesarRegistro(@ModelAttribute("usuario") UsuarioDTO usuarioDTO) {
         usuarioService.guardarUsuarioConRolPaciente(usuarioDTO);
-        return "redirect:/login?registroExitoso";
+        return "redirect:/login?registroExitoso"; 
     }
 }
